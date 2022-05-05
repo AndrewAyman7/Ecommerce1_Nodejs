@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"> <!-- starts from assets folder -->
+</head>
+<body>
+    
+
+    <%- include("parts/navbar.ejs") %>    <!-- Because i will use navbar in many pages  -->
+
+    <div class="container">
+        <h3> Login </h3>
+        <form action="/login" method="post">
+            <input type="email"    name="email"    class="form-control"  placeholder="Email">
+            <input type="password" name="pass"     class="form-control"  placeholder="Password">
+            <input type="submit"   value="Login"   class="btn btn-primary">     
+        </form>
+    </div>  <br>
+
+
+    
+
+    <!-- in case of wrong password -->
+    <% if(logError){ %>
+    <p class="alert alert-danger">
+        <%= logError %>
+    </p>
+    <% } %>
+
+
+
+   
+    <script src="/js/bootstrap.min.css"></script>
+    <script src="/js/bootstrap1.min.css"></script>
+    <script src="/js/popper.min.css"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"> <!-- starts from assets folder -->
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          padding: 2px;
+        } 
+    </style>
+</head>
+<body>
+    
+
+    <%- include("parts/navbar.ejs") %>    <!-- Because i will use navbar in many pages  -->
+
+
+    <% if (items.length === 0) { %>
+        <p class="alert alert-danger">
+            There is No items ..
+        </p>
+    <% } %>
+    
+    <table>
+
+        <thead>
+            <td> no &nbsp; </td>
+            <td> product name &nbsp; </td>
+            <td> price &nbsp; </td>
+            <td> amount &nbsp; </td> 
+            <td> total &nbsp; </td> 
+        </thead>
+
+        <tbody>
+            <% for(let i = 0; i < items.length; i++) { %>
+                <tr>
+                    <td> <%= i+1 %> </td>
+                    <td> <%= items[i].name %> </td>
+                    <td> <%= items[i].price %> </td>
+
+                    <form action="" method="post">
+                        <td> <input type="text" name="amount" class="form-control" value="<%= items[i].amount %>"> </td>
+                        <td> <%= items[i].amount * items[i].price %> </td>
+                        <td>
+                            <input type="hidden" name="cartId" value="<%= items[i].id %>">
+                            <input type="submit" class="btn btn-success"  value="save" formaction="/cart/save">
+                            <input type="submit" class="btn btn-danger" value="delete" formaction="/cart/delete">
+                        </td>
+                    </form>
+                </tr>
+            <% } %>    
+        </tbody>
+
+    </table>
+
+
+
+
+    <script src="/js/bootstrap.min.css"></script>
+    <script src="/js/bootstrap1.min.css"></script>
+    <script src="/js/popper.min.css"></script>
+</body>
+</html>

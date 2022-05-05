@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"> <!-- starts from assets folder -->
+</head>
+<body>
+    
+
+
+    <%- include("parts/navbar.ejs") %>    <!-- Because i will use navbar in many pages  -->
+
+
+    <div class="container text-center">
+
+        <h3>Add Product</h3>
+
+        <form action="/admin/addProduct" method="post" enctype="multipart/form-data">
+            <input type="text"    name="name"       class="form-control"   placeholder="name">
+            <input type="number"  name="price"      class="form-control"   placeholder="price">
+            <input type="text"    name="category"   class="form-control"   placeholder="category"> 
+            <input type="file"   name="image"      class="form-control"   placeholder="image"> 
+            <input type="submit"  value="Add">
+        </form> 
+
+        <% for(let x of invalidProduct){ %>
+            <p class="alert alert-danger">
+                <%= x.msg %>
+            </p>
+        <% } %>    
+
+    </div> 
+
+
+
+
+
+    <script src="/js/bootstrap.min.css"></script>
+    <script src="/js/bootstrap1.min.css"></script>
+    <script src="/js/popper.min.css"></script>
+</body>
+</html>

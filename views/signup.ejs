@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"> <!-- starts from assets folder -->
+</head>
+<body>
+    
+
+    <%- include("parts/navbar.ejs") %>    <!-- Because i will use navbar in many pages  -->
+
+    <div class="container">
+        <h3> Create An Account </h3>
+        <form action="/signup" method="post">
+            <input type="text"     name="username"        class="form-control" placeholder="Username">
+            <input type="email"    name="email"           class="form-control" placeholder="Email">
+            <input type="password" name="pass"            class="form-control" placeholder="Password">
+            <input type="password" name="confirmpass"     class="form-control" placeholder="Confirm Password">
+            <input type="submit"   value="Create Account" class="btn btn-primary"> 
+        </form>
+        <a href="/login"> Login </a>
+    </div> 
+
+
+    <% for(let x of invalidRegister) { %>
+        <p class="alert alert-danger">
+            <%= x.msg %>
+        </p>
+    <% } %> 
+
+
+    <script src="/js/bootstrap.min.css"></script>
+    <script src="/js/bootstrap1.min.css"></script>
+    <script src="/js/popper.min.css"></script>
+</body>
+</html>
