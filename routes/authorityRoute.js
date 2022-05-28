@@ -11,7 +11,7 @@ const check = require("express-validator").check
 
 router.get("/signup" , protector.isUserNotLogin, authControl.getSignup)     
 
-router.post("/signup", bodyParserMW,                      // Note that , "/signup" detected by Form Action
+router.post("/signup", bodyParserMW,                      
     check("username").not().isEmpty().withMessage("username is required"),
     check("email").not().isEmpty().withMessage("email is required").isEmail().withMessage("invalid email format"),
     check("pass").not().isEmpty().isLength( {min:6} ).withMessage("at least 6 chars") ,
@@ -31,21 +31,9 @@ router.all("/logout", protector.isUserLogin ,authControl.logout)
 
 
 
-
-
-//----------------- Admin Pages ------------------//    ->   "/admin/addProduct" , "/admin/manage"
-
 const multer = require("multer")
 
-//const multerMW = multer( {dest : "images"} ).single("image"); 
-
-
 router.get("/addProduct" , protector.isUserAdmin , authControl.getAddProduct) 
-
-//router.get("/manage" , protector.isUserAdmin , authControl.getManage) 
-
-
-
 
 router.post("/addProduct" , protector.isUserAdmin , multer({
     storage: multer.diskStorage({
@@ -62,15 +50,6 @@ check("image").custom((value, { req }) => {
     if (req.file) return true;
     else throw "image is required";
 }) ,authControl.postAddProduct)
-
-
-
-
-
-
-//router.post("/manage" , protector.isUserAdmin , authControl.postManage) 
-
-
 
 
 
