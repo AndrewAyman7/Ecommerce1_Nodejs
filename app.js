@@ -18,14 +18,14 @@ app.use( express.static(path.join(__dirname,"assets" )) )
 app.use( express.static(path.join(__dirname,"images" )) )  
 
 
-//----------- Sessions -----------
-const STORE = new sessionStoreDB({      // Will Make the collection
+
+const STORE = new sessionStoreDB({      
     uri: "mongodb://localhost:27017/online-shop",
     collection: "sessions"
 })
 
 app.use(session({
-    secret: "that is my secret, ana andrew ylaaaaa",
+    secret: "that is a random secret, andrew aymaaaaaaaaaaaaaaan cs",
     saveUninitialized: false,
     store : STORE
 })) 
