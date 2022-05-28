@@ -14,7 +14,7 @@ const cartScheme = mongoose.Schema( {
 const cartItem = mongoose.model("cart",cartScheme)
 
 
-var promise = require('promise');  // Laaaaaaaaaaaaaaaaaazem
+var promise = require('promise');  
 
 
 exports.addNewItem = (itemData) =>{
@@ -38,7 +38,7 @@ exports.getItemById = (id) =>{
     return new promise( (resolve,reject) => {
 
         mongoose.connect(DB_URL).then( ()=>{
-            return cartItem.find( {userId : id} , {} , { sort : {timeStamp:1} }  )   // or -> without { }  , dont write return 
+            return cartItem.find( {userId : id} , {} , { sort : {timeStamp:1} }  )  
         } ).then( (items)=>{
             mongoose.disconnect()
             resolve(items)
@@ -50,8 +50,7 @@ exports.getItemById = (id) =>{
 }
 
 
-
-exports.editItem = (cartId , newData) =>{            // I take the newData as an object
+exports.editItem = (cartId , newData) =>{            
     return new promise( (resolve,reject) => {
 
         mongoose.connect(DB_URL).then( ()=>{
@@ -68,8 +67,7 @@ exports.editItem = (cartId , newData) =>{            // I take the newData as an
 
 
 
-
-exports.deleteItem = (cartId) =>{            // I take the newData as an object
+exports.deleteItem = (cartId) =>{           
     return new promise( (resolve,reject) => {
 
         mongoose.connect(DB_URL).then( ()=>{
