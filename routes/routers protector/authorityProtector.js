@@ -7,9 +7,9 @@ exports.isUserLogin = (req,res,next) =>{
 
 
 exports.isUserNotLogin = (req,res,next) =>{
-    if(!req.session.userId)       // if he not login , eshtaa wdeeh le saf7a el login
+    if(!req.session.userId)       // if he not login 
         next()  
-    else                          // lw hwa login , ( W katb fe el Url /login , laaa wdeeh elhome )
+    else                          
         res.redirect("/")
 }
 
