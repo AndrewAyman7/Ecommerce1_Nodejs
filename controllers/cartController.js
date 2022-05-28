@@ -2,7 +2,7 @@ const modelCart = require("../models/cart")
 const validationRes = require("express-validator").validationResult
 
 
-// Take the data from the (Form) method post
+
 exports.postCart = (req,res,next)=>{
     if (validationRes(req).isEmpty()){
         modelCart.addNewItem({ 
