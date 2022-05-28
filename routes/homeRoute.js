@@ -3,9 +3,9 @@ const protector = require("./routers protector/authorityProtector")
 
 const { model } = require("mongoose");
 
-const homeController = require("../controllers/homeController")   // import (controller page) => the Middleware that i will use
+const homeController = require("../controllers/homeController")   
 
 
-router.get("/", homeController.homeget) //router.get("/" , protector.isUserLogin ,homeController.homeget)->if you want home page appear if only user is login
+router.get("/", homeController.homeget) 
 
-module.exports = router                                           // Export the homeRoute .. 
+module.exports = router                                         
