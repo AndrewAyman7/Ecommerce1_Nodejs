@@ -14,7 +14,7 @@ const product = mongoose.model("product",productSchema);
 
 var promise = require('promise');
 
-/*exports.getProducts = ()=>{                         // Export this fun , to use it in other page 
+exports.getProducts = ()=>{                         
     return new promise( (resolve,reject) => {
 
         mongoose.connect(DB_URL).then(()=>{ return product.find({}) }).then(products =>{
@@ -22,28 +22,12 @@ var promise = require('promise');
             resolve(products)
         }).catch(err=>{reject(err)})
     } )
-}*/
-
-
-/*exports.getProducts = async ()=>{
-    await mongoose.connect(DB_URL);
-    return await product.find( async (err,users)=>{
-        await mongoose.disconnect().then(()=>{console.log("disconnected")}) ;
-        return users;
-    } ).clone();
-}*/
-
-exports.getProducts = async ()=>{
-    await mongoose.connect(DB_URL);
-    return await product.find({} , (err,users)=>{
-        mongoose.disconnect();
-    }).clone();
-
-    //await mongoose.disconnect();
 }
 
 
-exports.getFilteredProducts = (category)=>{                         // Export this fun , to use it in other page 
+
+
+exports.getFilteredProducts = (category)=>{                        
     return new promise( (resolve,reject) => {
 
         mongoose.connect(DB_URL).then(()=>{ return product.find({category:category}) }).then(products =>{
@@ -56,7 +40,7 @@ exports.getFilteredProducts = (category)=>{                         // Export th
 
 //--------------------------------------------------------------------------
 
-exports.getProductById = (id)=>{                         // Export this fun , to use it in other page 
+exports.getProductById = (id)=>{                         
     return new promise( (resolve,reject) => {
 
         mongoose.connect(DB_URL).then(()=>{ return product.findById(id) }).then(products =>{
