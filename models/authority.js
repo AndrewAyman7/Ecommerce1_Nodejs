@@ -14,12 +14,11 @@ const userSchema = mongoose.Schema( {
     }
 } )
   
-const User = mongoose.model("user",userSchema);  // Will Make a cllection called "users"
+const User = mongoose.model("user",userSchema);  
 
 
 var promise = require('promise');
 
-//------------------ 1- Signup --------------------//
 
 exports.createNewUser = (name , email , password )=>{
 
@@ -51,23 +50,22 @@ exports.createNewUser = (name , email , password )=>{
 
 }
 
-//------------------ 2- Login --------------------//
 
 exports.login = (email , pass)=>{
     return new promise( (resolve , reject)=>{
         var userIdStore 
         var isAdminStrore
         mongoose.connect(DB_URL).then(()=>{
-            return User.findOne( {email : email} )} // User -> The Collection
+            return User.findOne( {email : email} )} 
         ).then((user)=>{
             if (!user){
                 mongoose.disconnect()
                 reject("The email is not exist")
             }
             else{
-                userIdStore=user._id; // To use it outside this scope
+                userIdStore=user._id; 
                 isAdminStrore = user.isAdmin;
-                return bcrypt.compare(pass, user.pass)  // compare -> Return a Promise (true/false) , i will call it same
+                return bcrypt.compare(pass, user.pass)  
             }
         }).then((same)=>{
             if (!same){
@@ -86,5 +84,4 @@ exports.login = (email , pass)=>{
 }
 
 
-//------------------ 3- Add new Product --------------------//
 
