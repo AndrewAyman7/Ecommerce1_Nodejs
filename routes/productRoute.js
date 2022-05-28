@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const productController = require("../controllers/productController") // import
+const productController = require("../controllers/productController")
 
 router.get("/:id" , productController.productget) 
 
