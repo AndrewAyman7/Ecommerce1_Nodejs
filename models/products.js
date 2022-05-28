@@ -38,7 +38,6 @@ exports.getFilteredProducts = (category)=>{
 }
 
 
-//--------------------------------------------------------------------------
 
 exports.getProductById = (id)=>{                         
     return new promise( (resolve,reject) => {
@@ -51,7 +50,6 @@ exports.getProductById = (id)=>{
 }
 
 
-//--------------------------------------------------------------------------
 
 
 exports.addNewProduct = (productData)=>{                 
