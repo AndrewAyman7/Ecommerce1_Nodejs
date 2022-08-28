@@ -50,6 +50,35 @@ exports.createNewUser = (name , email , password )=>{
 
 }
 
+//By Async Await
+/*exports.createNewUser = async (data) =>{
+
+    try{
+        await mongoose.connect(DB_URL);
+        let exist = await User.findOne( {email:data.email} );
+    
+        if(exist == null){
+            let hashedPass = await bcrypt.hash(data.password,10);
+            await new User({
+                username: data.username,
+                email:  data.email,
+                password: hashedPass
+            }).save();
+            mongoose.disconnect();
+            return;
+        }else{
+            mongoose.disconnect();
+            throw("existttt");
+        } 
+    }catch(err){
+        mongoose.disconnect();
+        throw err;
+    }
+
+
+}
+
+*/
 
 exports.login = (email , pass)=>{
     return new promise( (resolve , reject)=>{
