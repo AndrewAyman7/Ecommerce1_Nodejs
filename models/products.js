@@ -24,7 +24,12 @@ exports.getProducts = ()=>{
     } )
 }
 
-
+exports.getProducts = async()=>{
+    await mongoose.connect(DB_URL);
+    let result = await products.find({});
+    mongoose.disconnect();
+    return result;
+}
 
 
 exports.getFilteredProducts = (category)=>{                        
